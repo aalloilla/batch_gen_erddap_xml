@@ -20,7 +20,9 @@ rootdir=/data/erddap/Walton-Smith/
 erddap_scriptdir=/usr/local/apache-tomcat-10.1.7/webapps/erddap/WEB-INF/
 # ERDDAP output directory for the generated XML files:
 xmldir=/usr/local/erddap_bigparentdir/logs/
-
+# optional suffix. Keep empty if you want to match data folder names exactly. 
+#datadir_suffix=""
+datadir_suffix="_Profile"
 
 #outfile=GenerateDatasetsXml_WS22141.out
 
@@ -34,7 +36,7 @@ do
     # the XML otput file for the current folder (e.g. a cruise in case of Walton-Smith CTD data)
     outfile=GenerateDatasetsXml_${adir}.out
     # the current data input folder
-    indir="${rootdir}${adir}/"
+    indir="${rootdir}${adir}${datadir_suffix}/"
 
     # start the loop thru files
     printf "<!--  Start $adir --> \n \n \n" > $xmldir$outfile
